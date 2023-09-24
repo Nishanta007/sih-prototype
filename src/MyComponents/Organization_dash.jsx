@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import Details_modal from './Details_modal';
 import Button from '@mui/material/Button';
@@ -8,9 +8,19 @@ import EditIcon from '@mui/icons-material/Edit';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import AddIcon from '@mui/icons-material/Add';
 
+const getData = () => {
+  const data = localStorage.getItem("cardDatas");
+  if(data) {
+    return JSON.parse(data);
+  }
+  else {
+    return [];
+  }
+};
+
 const Organization_dash = () => {
 
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState(getData());
 
   const handleCreateCard = (cardData) => {
     setCards([...cards, cardData]);
@@ -21,6 +31,10 @@ const Organization_dash = () => {
     updatedCards.splice(index, 1);
     setCards(updatedCards);
   };
+  
+  useEffect(() => {
+    localStorage.setItem('cardDatas',JSON.stringify(cards))
+  }, [cards]);
 
   return (
     <div >
@@ -89,10 +103,3 @@ const Organization_dash = () => {
 }
 
 export default Organization_dash
-
-{/* {cards.map((card, index) => (
-          <div key={index} className="card">
-            <h3>{card.type}</h3>
-            <p>{card.name}</p>
-          </div>
-        ))} */}

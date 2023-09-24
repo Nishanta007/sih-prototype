@@ -1,22 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Textfield from './Textfield';
 import '../App.css';
 import Button from '@mui/material/Button';
 import CancelIcon from '@mui/icons-material/Cancel';
 // Component to render a "Detail" element
-function DetailItem({ name }) {
-  return <p>{name}</p>;
+function DetailItem({ name, type }) {
+  return <p>{type} : {name}</p>;
 }
 
 // Component to render a "Document" element
-function DocumentItem({ name }) {
-  return <div>{name}</div>;
+function DocumentItem({ name, type }) {
+  return <div>{type} : {name}</div>;
+}
+
+const getData = () => {
+  const data = localStorage.getItem("Scholarship");
+
+  if(data) {
+    return JSON.parse(data);
+  }
+  else {
+    return [];
+  }
 }
 
 const Details_modal = ({ onCardCreate }) => {
   const [type, setType] = useState('detail');
   const [name, setName] = useState('');
-  const [addedItems, setAddedItems] = useState([]);
+  const [addedItems, setAddedItems] = useState(getData());
 
   const handleTypeChange = (e) => {
     setType(e.target.value);
@@ -40,13 +51,9 @@ const Details_modal = ({ onCardCreate }) => {
     setAddedItems(updatedItems);
   };
 
-  const handleCreateClick = () => {
-    if (addedItems.length > 0) {
-      // Create a card using the first added item (you can customize this logic)
-      const cardData = addedItems[0];
-      onCardCreate(cardData);
-    }
-  };
+  useEffect(() => {
+    localStorage.setItem('Scholarship',JSON.stringify(addedItems))
+  }, [addedItems]);
 
   return (
     <div>
@@ -55,9 +62,9 @@ const Details_modal = ({ onCardCreate }) => {
           {addedItems.length === 0 ? 'No Credentials Added' : addedItems.map((item, index) => (
             <div key={index} className='list'>
               {item.type === 'detail' ? (
-                <DetailItem key={index} name={item.name} />
+                <DetailItem key={index} name={item.name} type={item.type} />
               ) : (
-                <DocumentItem key={index} name={item.name} />
+                <DocumentItem key={index} name={item.name} type={item.type} />
               )}
               {/* <button type="button" className="btn-close" onClick={() => handleDeleteClick(index)}></button> */}
               <CancelIcon onClick={() => handleDeleteClick(index)} style={{cursor:'pointer',color:'#a30707bd'}}/>
