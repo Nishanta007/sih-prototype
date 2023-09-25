@@ -15,7 +15,6 @@ function DocumentItem({ name, type }) {
 
 const getData = () => {
   const data = localStorage.getItem("Scholarship");
-
   if(data) {
     return JSON.parse(data);
   }
@@ -24,11 +23,12 @@ const getData = () => {
   }
 }
 
-const Details_modal = ({ onCardCreate }) => {
+
+const Details_modal = (props) => {
   const [type, setType] = useState('detail');
   const [name, setName] = useState('');
+  const [sname, setSname] = useState('');
   const [addedItems, setAddedItems] = useState(getData());
-
   const handleTypeChange = (e) => {
     setType(e.target.value);
   };
@@ -36,11 +36,18 @@ const Details_modal = ({ onCardCreate }) => {
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
+  const handleSnameChange = (e) => {
+    setSname(e.target.value);
+  }
 
   const handleAddClick = () => {
     if (name) {
-      const newItem = { type, name };
-      setAddedItems([...addedItems, newItem]);
+      const newItem = { sname, type, name };
+      let check = 1;
+      if(addedItems.length) {
+        for(let i = 0;i < addedItems.length;i++) if(addedItems[i].sname === sname){check = 0; break;}
+      }
+      if(check === 1) setAddedItems([...addedItems, newItem]);
       setName("");
     }
   };
@@ -58,6 +65,12 @@ const Details_modal = ({ onCardCreate }) => {
   return (
     <div>
       <div>
+          <div className='spacebt'>
+            <h6>Scholorship Name</h6>
+          <Textfield onChange={handleSnameChange} width={"16rem"} ph={"Enter your scholorship name"} value={sname}/>
+
+          </div>
+          <hr></hr>
         <div className='listcontain'>
           {addedItems.length === 0 ? 'No Credentials Added' : addedItems.map((item, index) => (
             <div key={index} className='list'>

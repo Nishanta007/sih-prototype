@@ -1,29 +1,53 @@
 import React, { useState, useEffect } from 'react';
-import Modal from 'react-modal';
-import Details_modal from './Details_modal';
 import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
 import "./organization.css";
-import EditIcon from '@mui/icons-material/Edit';
-import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import AddIcon from '@mui/icons-material/Add';
+import Card from './Card';
+import Textfield from './Textfield';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const getData = () => {
-  const data = localStorage.getItem("cardDatas");
-  if(data) {
-    return JSON.parse(data);
+  const data = localStorage.getItem("Scholarship");
+
+  try {
+    if (data) {
+      return JSON.parse(data);
+    }
+  } catch (error) {
+    console.error("Error parsing data from localStorage:", error);
   }
-  else {
-    return [];
-  }
+
+  return [];
 };
+
+// Component to render a "Detail" element
+function DetailItem({ name, type }) {
+  return <p>{type} : {name}</p>;
+}
+
+// Component to render a "Document" element
+function DocumentItem({ name, type }) {
+  return <div>{type} : {name}</div>;
+}
 
 const Organization_dash = () => {
 
-  const [cards, setCards] = useState(getData());
+  const [cards, setCards] = useState(()=>getData());
+  const [type, setType] = useState('detail');
+  const [name, setName] = useState('');
+  const [sname, setSname] = useState('');
+  const [arr, setArr] = useState([]);
+  const [addedItems, setAddedItems] = useState(getData());
 
-  const handleCreateCard = (cardData) => {
-    setCards([...cards, cardData]);
+  const handleCreateCard = () => {
+    if (sname && addedItems.length > 0) {
+      // Create a new scholarship entry with the current data
+      const newCardData = { sname, items: addedItems };
+      setCards([...cards, newCardData]);
+      // Clear the form
+      setSname('');
+      setAddedItems([]);
+    }
   };
 
   const handleDeleteCard = (index) => {
@@ -31,21 +55,44 @@ const Organization_dash = () => {
     updatedCards.splice(index, 1);
     setCards(updatedCards);
   };
-  
+
   useEffect(() => {
-    localStorage.setItem('cardDatas',JSON.stringify(cards))
+    localStorage.setItem('Scholarship', JSON.stringify(cards));
   }, [cards]);
+
+  const handleTypeChange = (e) => {
+    setType(e.target.value);
+  };
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleSnameChange = (e) => {
+    setSname(e.target.value);
+  }
+
+  const handleAddClick = () => {
+    if (name) {
+      const newItem = { type, name };
+      setAddedItems([...addedItems, newItem]);
+      setName("");
+    }
+  };
+
+  const handleDeleteClick = (index) => {
+    const updatedItems = [...addedItems];
+    updatedItems.splice(index, 1);
+    setAddedItems(updatedItems);
+  };
 
   return (
     <div >
       <h1>Organization Dash</h1>
-      {/* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Create
-      </button> */}
-      
-      <Button id='compose' variant='contain' startIcon={<AddIcon style={{fontSize:'2rem'}}/>} data-bs-toggle="modal" data-bs-target="#exampleModal">Create New</Button>
-      
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+      <Button id='compose' variant='contain' startIcon={<AddIcon style={{ fontSize: '2rem' }} />} data-bs-toggle="modal" data-bs-target="#exampleModal">Create New</Button>
+
+      <div className="modal fade" id="exampleModal" tabndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
         <div className="modal-dialog">
           <div className="modal-content">
@@ -59,15 +106,54 @@ const Organization_dash = () => {
               ></button>
             </div>
             <div className="modal-body">
-              <Details_modal />
+
+            <div>
+      <div>
+          <div className='spacebt'>
+            <h6>Scholorship Name</h6>
+          <Textfield onChange={handleSnameChange} width={"16rem"} ph={"Enter your scholorship name"} value={sname}/>
+
+          </div>
+          <hr></hr>
+        <div className='listcontain'>
+          {addedItems.length === 0 ? 'No Credentials Added' 
+          : addedItems.map((item, index) => (
+            <div key={index} className='list'>
+              {item.type === 'detail' ? (
+                <DetailItem key={index} name={item.name} type={item.type} />
+              ) : (
+                <DocumentItem key={index} name={item.name} type={item.type} />
+              )}
+
+              <CancelIcon onClick={() => handleDeleteClick(index)} style={{cursor:'pointer',color:'#a30707bd'}}/>
+            </div>
+          ))}
+        </div>
+        <form onSubmit={(e) => {
+          e.preventDefault(false);
+        }}>
+          <div className='spacebt'>
+            <select className='dropdown' value={type} onChange={handleTypeChange}>
+              <option value="detail">Detail</option>
+              <option value="document">Document</option>
+            </select>
+            <Textfield onChange={handleNameChange} width={"16rem"} ph={"Enter your credential name"} value={name}/>
+            <Button variant='contained' type="submit" className="btn btn-primary" onClick={handleAddClick}>Add</Button>
+          </div>
+        </form>
+      </div>
+    </div>
             </div>
             <div className="modal-footer">
               <Button
-                variant='contained' style={{marginRight:'1rem'}}
+                variant='contained' style={{ marginRight: '1rem' }}
                 type="submit"
                 className="btn btn-primary"
                 data-bs-dismiss="modal"
-                onClick={handleCreateCard}>
+                onClick={() => {
+                  handleCreateCard();
+                  // <Details_modal fun={`${handleDeleteClick}`} />
+                }} >
                 Create
               </Button>
               <Button
@@ -80,26 +166,17 @@ const Organization_dash = () => {
         </div>
       </div>
       <div className="curousel">
-        {cards.map((card, idx) => {
-          return (
-            <div className="cards-Contain">
-              <div className="detail">
-                {cards.name}
-              </div>
-              <div className="bttn-bar">
-                <Button className="bttn1" variant="contained" endIcon={<EditIcon />}>Edit</Button>
-                <Button className="bttn2" variant="contained" color="success" endIcon={<TaskAltIcon />}>Fill</Button>
-                <Button className="bttn3" variant="contained"
-                onClick={() => handleDeleteCard(idx)}
-                  startIcon={<DeleteIcon />}
-                >Delete</Button>
-              </div>
-            </div>
-          );
-        })}
+        {cards.map((card, idx) => (
+          <Card
+            key={idx}
+            name={card.sname}
+            items={card.items}
+            fun={handleDeleteCard} 
+            onDelete={() => handleDeleteCard(idx)}
+          />
+        ))}
       </div>
     </div>
   );
 }
-
-export default Organization_dash
+export default Organization_dash;
