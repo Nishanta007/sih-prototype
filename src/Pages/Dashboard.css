@@ -6,13 +6,23 @@
 
 :root {
     --hover: rgba(156, 233, 210, 0.466);
+    --background: rgba(240, 248, 255, 0.678);
     --text: #001d2f;
- }
+}
 
-/* sidebar */
+.contain {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* sidebar Start*/
+
 .side {
-    max-width: 20%;
-    background-color: rgba(240, 248, 255, 0.678);
+    width: 20%;
+    /* position: fixed; */
+    background-color: var(--background);
     min-height: calc(100vh - 70px);
     box-shadow: 1px 5px 20px 4px rgba(0,0,0,0.05);
 }
@@ -29,4 +39,15 @@
 
 .side .list_elem:hover {
     background-color: var(--hover);
+}
+/* Sidebar End */
+
+/* List1 start */
+
+.list1 {
+    width: calc(100% - 21%);
+    height: 70px;
+    margin: 0.5rem auto;
+    display: flex;
+    border: 1px solid red;
 }
