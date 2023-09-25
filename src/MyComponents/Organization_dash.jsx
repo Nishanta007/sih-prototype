@@ -5,7 +5,7 @@ import AddIcon from '@mui/icons-material/Add';
 import Card from './Card';
 import Textfield from './Textfield';
 import CancelIcon from '@mui/icons-material/Cancel';
-import SideBar from './sideBar';
+import SideBar from './SideBar';
 import "../Pages/Dashboard.css";
 
 const getData = () => {

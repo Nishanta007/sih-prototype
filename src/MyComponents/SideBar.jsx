@@ -5,9 +5,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import PendingActionsIcon from '@mui/icons-material/PendingActions';
 
-const SideBar = () => {
+const SideBar = (props) => {
   return (
     <>
       <div className="contain">
@@ -16,9 +15,9 @@ const SideBar = () => {
             <ListItem disablePadding className='list_elem'>
               <ListItemButton>
                 <ListItemIcon>
-                  <PendingActionsIcon />
+                  {props.icon}
                 </ListItemIcon>
-                <ListItemText primary="Verification Requests" />
+                <ListItemText primary={props.name} />
               </ListItemButton>
             </ListItem>
           </List>
