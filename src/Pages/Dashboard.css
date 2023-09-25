@@ -5,7 +5,8 @@
 }
 
 :root {
-    --hover: rgba(240,248,255,0.678);
+    --hover: rgba(156, 233, 210, 0.466);
+    --text: #001d2f;
  }
 
 /* sidebar */
@@ -23,4 +24,9 @@
     /* border: 1px solid rgba(240, 248, 255, 0.678); */
     /* background-color: rgba(228, 228, 228, 0.363); */
     overflow: hidden;
+    color: var(--text);
+}
+
+.side .list_elem:hover {
+    background-color: var(--hover);
 }
