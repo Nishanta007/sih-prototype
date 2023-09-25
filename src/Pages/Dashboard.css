@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --hover: rgba(240,248,255,0.678);
+ }
+
+/* sidebar */
+.side {
+    max-width: 20%;
+    background-color: rgba(240, 248, 255, 0.678);
+    min-height: calc(100vh - 70px);
+    box-shadow: 1px 5px 20px 4px rgba(0,0,0,0.05);
+}
+
+.side .list_elem {
+    width: 95%;
+    margin: 0.5rem auto;
+    border-radius: 6px;
+    /* border: 1px solid rgba(240, 248, 255, 0.678); */
+    /* background-color: rgba(228, 228, 228, 0.363); */
+    overflow: hidden;
+}

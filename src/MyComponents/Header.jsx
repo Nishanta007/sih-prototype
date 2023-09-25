@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Header = (props) => {
     return (
-        <nav className="navbar bg-dark border-bottom border-body navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <nav className="navbar bg-dark border-bottom border-body navbar-expand-lg bg-body-tertiary" data-bs-theme="blue" style={{height:'70px'}}>
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">{props.title}</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

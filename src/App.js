@@ -1,8 +1,8 @@
 import './App.css';
 import { Header } from "./MyComponents/Header";
 import Login from "./MyComponents/Login";
-import Details_modal from './MyComponents/Details_modal';
 import Organization_dash from './MyComponents/Organization_dash';
+import Dashboard from './Pages/Dashboard'
 
 
 
@@ -12,7 +12,8 @@ function App() {
       <div style={{ backgroundColor: '#f8f8f8', minHeight:'100vh' }}>
         <Header title="SIH" />
         {/* <Login/> */}
-        <Organization_dash />
+        {/* <Organization_dash /> */}
+        <Dashboard />
       </div>
     </>
   );
