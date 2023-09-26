@@ -9,7 +9,7 @@ import ListItemText from '@mui/material/ListItemText';
 const SideBar = (props) => {
   return (
     <>
-      <div className="contain">
+      {/* <div className="contain"> */}
         <div className="side">
           <List>
             <ListItem disablePadding className='list_elem'>
@@ -22,7 +22,7 @@ const SideBar = (props) => {
             </ListItem>
           </List>
         </div>
-      </div>
+      {/* </div> */}
     </>
   )
 }

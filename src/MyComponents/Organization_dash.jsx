@@ -41,6 +41,7 @@ const Organization_dash = () => {
   const [arr, setArr] = useState([]);
   const [addedItems, setAddedItems] = useState(getData());
   const [selectedCardIndex, setSelectedCardIndex] = useState(null); // Add selectedCardIndex state
+  const [showModal, setShowModal] = useState(false);
 
   const handleCreateCard = () => {
     if (sname && addedItems.length > 0) {
@@ -52,13 +53,22 @@ const Organization_dash = () => {
       setAddedItems([]);
     }
   };
+  const openModal = () => {
+    setShowModal(true);
+  };
+  
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   const handleCardModalOpen = (index) => {
     setSelectedCardIndex(index); // Set the selected card index
+    openModal();
   };
 
   const handleCardModalClose = () => {
     setSelectedCardIndex(null); // Reset the selected card index when modal is closed
+    closeModal();
   };
 
   const handleDeleteCard = (index) => {
@@ -96,6 +106,7 @@ const Organization_dash = () => {
     updatedItems.splice(index, 1);
     setAddedItems(updatedItems);
   };
+
 
   return (
     <>
@@ -183,15 +194,37 @@ const Organization_dash = () => {
         <div className="curousel">
           {cards.map((card, idx) => (
             <>
-              <Card key={idx} name={card.sname} items={card.items} fun={handleDeleteCard} onDelete={() => handleDeleteCard(idx)} />
-              <Button variant='contained' color='primary' data-bs-toggle="modal" data-bs-target="#cardModal" onClick={() => handleCardModalOpen(idx)}>Open Modal</Button>
+              <Card idx={idx} name={card.sname} items={card.items} fun={handleDeleteCard} fun2={handleCardModalOpen} onDelete={() => handleDeleteCard(idx)} />
+              {/* <Button variant='contained' color='primary' data-bs-toggle="modal" data-bs-target="#cardModal" onClick={() => handleCardModalOpen(idx)}>Open Modal</Button> */}
+              {showModal && (
+    <div className="custom-modal">
+      <div className="modal-content">
+        <h5>Modal Title</h5>
+        <p>Modal Content</p>
+        {cards[selectedCardIndex].items.map((item, index) => (
+                        <div key={index}>
+                          {item.type === 'detail' ? (
+                            <>
+                            <DetailItem name={item.name} type={item.type} />
+                            <Textfield/>
+                            </>
+                            ) : (
+                              <>
+                              <DocumentItem name={item.name} type={item.type} />
+                              <input type='file'></input>
+                              </>
+                              )}
+                        </div>
+                      ))}
+        <button onClick={closeModal}>Close</button>
+      </div>
+    </div>
+  )}
 
-              {selectedCardIndex !== null && (
+              {/* {showModal && (
                 <div className="modal fade" id="cardModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div className="modal-dialog">
                     <div className="modal-content">
-                      {/* Modal content here */}
-                      {/* Use selectedCardIndex to access addedItems for the selected card */}
                       {cards[selectedCardIndex].items.map((item, index) => (
                         <div key={index}>
                           {item.type === 'detail' ? (
@@ -212,7 +245,7 @@ const Organization_dash = () => {
                     </div>
                   </div>
                 </div>
-              )}
+              )} */}
             </>
 
 ))}
