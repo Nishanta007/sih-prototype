@@ -15,9 +15,24 @@ const SideBar = (props) => {
             <ListItem disablePadding className='list_elem'>
               <ListItemButton>
                 <ListItemIcon>
-                  {props.icon}
+                  {props.icon1}
                 </ListItemIcon>
-                <ListItemText primary={props.name} />
+                <ListItemText primary={props.name1} />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding className='list_elem'>
+              <ListItemButton>
+                <ListItemIcon>
+                  {props.icon2}
+                </ListItemIcon>
+                <ListItemText primary={props.name2} />
+              </ListItemButton>
+            </ListItem><ListItem disablePadding className='list_elem'>
+              <ListItemButton>
+                <ListItemIcon>
+                  {props.icon3}
+                </ListItemIcon>
+                <ListItemText primary={props.name3} />
               </ListItemButton>
             </ListItem>
           </List>

@@ -7,7 +7,7 @@ const Textfield = (props) => {
   };
 
   return (
-    <input className='field' type='text' placeholder={props.ph} value={props.value} onChange={props.onChange} style={inputStyle} />
+    <input className='field' type='text' autoComplete='off' placeholder={props.ph} value={props.value} onChange={props.onChange} style={inputStyle} />
   );
 }
 
