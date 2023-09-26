@@ -6,14 +6,12 @@ const List_phase1 = (props) => {
   return (
     <>
       <div className="list1">
-        <ListItem >
           <div className="first">
-            <div className="name">{props.name}</div>
-            <div className="count">Pending: {props.no}</div>
+            <div className="name"><span>Scholarship :</span> {props.name}</div>
+            <div className="count">Pending : <span>{props.no}</span></div>
           </div>
           <div className="desc">{props.description}</div>
           <div className="govt">By {props.state} government</div>
-        </ListItem>
       </div>
     </>
   );
