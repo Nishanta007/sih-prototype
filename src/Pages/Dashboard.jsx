@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Dashboard.css';
+import api from "./list1Data";
 import List_phase1 from '../MyComponents/List_phase1';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -11,6 +12,7 @@ import PendingActionsIcon from '@mui/icons-material/PendingActions';
 import CancelScheduleSendIcon from '@mui/icons-material/CancelScheduleSend';
 
 const Dashboard = () => {
+  const[data, setData] = useState(api);
   const [showListPhase1, setShowListPhase1] = useState(false);
   const handleVerificationRequestsClick = () => {
     setShowListPhase1(!showListPhase1);
@@ -46,7 +48,12 @@ const Dashboard = () => {
             </ListItem>
           </List>
         </div>
-        {showListPhase1 && <List_phase1 />}
+        {showListPhase1 && 
+        <div className='scholarship'>
+          {data.map((e) => {
+          return <List_phase1 {...e} />
+        })} </div>
+        }
       </div>
     </>
   )

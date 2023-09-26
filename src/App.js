@@ -9,7 +9,7 @@ import Dashboard from './Pages/Dashboard'
 function App() {
   return (
     <>
-      <div style={{ backgroundColor: '#f8f8f8', minHeight:'100vh' }}>
+      <div style={{ backgroundColor: '#fff', minHeight:'100vh' }}>
         <Header title="SIH" />
         {/* <Login/> */}
         {/* <Organization_dash /> */}
