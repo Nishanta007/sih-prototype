@@ -9,7 +9,7 @@ const Card = (props) => {
         <>
             <div className="cards-Contain">
                 <div style={{ marginLeft: '2rem' }}>
-                    {props.idx + 1}. {props.name}
+                    {parseInt(props.idx) + 1}. {props.name}
                 </div>
                 <div className="bttn-bar">
 

@@ -47,13 +47,13 @@ const Organization_dash = () => {
   const [showModal, setShowModal] = useState(false);
 
   const handleCreateCard = () => {
+    setAddedItems([]);
     if (sname && addedItems.length > 0) {
       // Create a new scholarship entry with the current data
       const newCardData = { sname, items: addedItems };
       setCards([...cards, newCardData]);
       // Clear the form
       setSname('');
-      setAddedItems([]);
     }
   };
   const VisuallyHiddenInput = styled('input')({
@@ -126,128 +126,130 @@ const Organization_dash = () => {
     <>
       <div className='main'>
         <SideBar icon1={<PlaylistAddCheckIcon />} name1={'Registered Students'} icon2={<LogoutIcon />} name2={'Logout'} />
-        <div className='org'>
-          <h3 style={{ padding: '1rem 1.5rem' }}>Scholorships</h3>
-          <Button id='compose' variant='contain' startIcon={<AddIcon style={{ fontSize: '2rem' }} />} data-bs-toggle="modal" data-bs-target="#exampleModal">Create New</Button>
+        <div className="contain">
+          <div className='org'>
+            <h3 style={{ padding: '1rem 1.5rem' }}>Scholorships</h3>
+            <Button id='compose' variant='contain' startIcon={<AddIcon style={{ fontSize: '2rem' }} />} data-bs-toggle="modal" data-bs-target="#exampleModal">Create New</Button>
 
-          <div className="modal fade" id="exampleModal" tabndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="exampleModal" tabndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title">Scholarship format</h5>
-                  <button
-                    type="button"
-                    className="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div className="modal-body">
+              <div className="modal-dialog">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title">Scholarship format</h5>
+                    <button
+                      type="button"
+                      className="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div className="modal-body">
 
-                  <div>
                     <div>
-                      <div className='spacebt'>
-                        <h6>Scholorship Name</h6>
-                        <Textfield onChange={handleSnameChange} width={"16rem"} ph={"Enter your scholorship name"} value={sname} />
-
-                      </div>
-                      <hr></hr>
-                      <div className='listcontain'>
-                        {addedItems.length === 0 ? 'No Credentials Added'
-                          : addedItems.map((item, index) => (
-                            <div key={index} className='list'>
-                              {item.type === 'detail' ? (
-                                <DetailItem key={index} name={item.name} type={item.type} />
-                              ) : (
-                                <DocumentItem key={index} name={item.name} type={item.type} />
-                              )}
-
-                              <CancelIcon onClick={() => handleDeleteClick(index)} style={{ cursor: 'pointer', color: '#a30707bd' }} />
-                            </div>
-                          ))}
-                      </div>
-                      <form onSubmit={(e) => {
-                        e.preventDefault(false);
-                      }}>
+                      <div>
                         <div className='spacebt'>
-                          <select className='dropdown' value={type} onChange={handleTypeChange}>
-                            <option value="detail">Detail</option>
-                            <option value="document">Document</option>
-                          </select>
-                          <Textfield onChange={handleNameChange} width={"16rem"} ph={"Enter your credential name"} value={name} />
-                          <Button variant='contained' type="submit" className="btn btn-primary" onClick={handleAddClick}>Add</Button>
+                          <h6>Scholorship Name</h6>
+                          <Textfield onChange={handleSnameChange} width={"16rem"} ph={"Enter your scholorship name"} value={sname} />
+
                         </div>
-                      </form>
+                        <hr></hr>
+                        <div className='listcontain'>
+                          {addedItems.length === 0 ? 'No Credentials Added'
+                            : addedItems.map((item, index) => (
+                              <div key={index} className='list'>
+                                {item.type === 'detail' ? (
+                                  <DetailItem key={index} name={item.name} type={item.type} />
+                                ) : (
+                                  <DocumentItem key={index} name={item.name} type={item.type} />
+                                )}
+
+                                <CancelIcon onClick={() => handleDeleteClick(index)} style={{ cursor: 'pointer', color: '#a30707bd' }} />
+                              </div>
+                            ))}
+                        </div>
+                        <form onSubmit={(e) => {
+                          e.preventDefault(false);
+                        }}>
+                          <div className='spacebt'>
+                            <select className='dropdown' value={type} onChange={handleTypeChange}>
+                              <option value="detail">Detail</option>
+                              <option value="document">Document</option>
+                            </select>
+                            <Textfield onChange={handleNameChange} width={"16rem"} ph={"Enter your credential name"} value={name} />
+                            <Button variant='contained' type="submit" className="btn btn-primary" onClick={handleAddClick}>Add</Button>
+                          </div>
+                        </form>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="modal-footer">
-                  <Button
-                    variant='contained' style={{ marginRight: '1rem' }}
-                    type="submit"
-                    className="btn btn-primary"
-                    data-bs-dismiss="modal"
-                    onClick={() => {
-                      handleCreateCard();
-                    }} >
-                    Create
-                  </Button>
-                  <Button
-                    variant='outlined'
-                    data-bs-dismiss="modal">
-                    Close
-                  </Button>
+                  <div className="modal-footer">
+                    <Button
+                      variant='contained' style={{ marginRight: '1rem' }}
+                      type="submit"
+                      className="btn btn-primary"
+                      data-bs-dismiss="modal"
+                      onClick={() => {
+                        handleCreateCard();
+                      }} >
+                      Create
+                    </Button>
+                    <Button
+                      variant='outlined'
+                      data-bs-dismiss="modal">
+                      Close
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="curousel">
-            {cards.map((card, idx) => (
-              <>
-                <Card idx={idx} name={card.sname} items={card.items} fun={handleDeleteCard} fun2={handleCardModalOpen} onDelete={() => handleDeleteCard(idx)} />
-                {/* <Button variant='contained' color='primary' data-bs-toggle="modal" data-bs-target="#cardModal" onClick={() => handleCardModalOpen(idx)}>Open Modal</Button> */}
-                {showModal && (
-                  <div className="overlay">
-                    <div className="custom-modal">
-                      <div className="modal-content">
-                        <h5 className='font-t'>Scholarship form</h5>
-                        <div className="form">
-                          {cards[selectedCardIndex].items.map((item, index) => (
-                            <div key={index}>
-                              {item.type === 'detail' ? (
-                                <>
-                                  <div className='form-field'>
-                                    <DetailItem name={item.name} type={item.type} />
-                                    <Textfield width={"16rem"} />
-                                  </div>
-                                </>
-                              ) : (
-                                <>
-                                  <div className='form-field'>
-                                    <DocumentItem name={item.name} type={item.type} />
-                                    <Button component="label" variant="contained" style={{backgroundColor:'#1586d2'}} startIcon={<CloudUploadIcon />}>Upload file<VisuallyHiddenInput type="file" /></Button>
-                                  </div>
-                                </>
-                              )}
-                            </div>
-                          ))}
-                        </div>
-                        <div className='bttn-mod'>
-                          <Button variant='contained' >Forward</Button>
-                          <Button variant='outlined' onClick={handleCardModalClose}>Close</Button>
+            <div className="curousel">
+              {cards.map((card, idx) => (
+                <>
+                  <Card idx={idx} name={card.sname} items={card.items} fun={handleDeleteCard} fun2={handleCardModalOpen} onDelete={() => handleDeleteCard(idx)} />
+                  {/* <Button variant='contained' color='primary' data-bs-toggle="modal" data-bs-target="#cardModal" onClick={() => handleCardModalOpen(idx)}>Open Modal</Button> */}
+                  {showModal && (
+                    <div className="overlay">
+                      <div className="custom-modal">
+                        <div className="modal-content">
+                          <h5 className='font-t'>Scholarship form</h5>
+                          <div className="form">
+                            {cards[selectedCardIndex].items.map((item, index) => (
+                              <div key={index}>
+                                {item.type === 'detail' ? (
+                                  <>
+                                    <div className='form-field'>
+                                      <DetailItem name={item.name} type={item.type} />
+                                      <Textfield width={"16rem"} />
+                                    </div>
+                                  </>
+                                ) : (
+                                  <>
+                                    <div className='form-field'>
+                                      <DocumentItem name={item.name} type={item.type} />
+                                      <Button component="label" variant="contained" style={{ backgroundColor: '#1586d2' }} startIcon={<CloudUploadIcon />}>Upload file<VisuallyHiddenInput type="file" /></Button>
+                                    </div>
+                                  </>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                          <div className='bttn-mod'>
+                            <Button variant='contained' >Forward</Button>
+                            <Button variant='outlined' onClick={handleCardModalClose}>Close</Button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                )}
-              </>
+                  )}
+                </>
 
-            ))}
-            {/* Modal for displaying added items of the selected card */}
+              ))}
+              {/* Modal for displaying added items of the selected card */}
+
+            </div>
 
           </div>
-
         </div>
       </div>
 
