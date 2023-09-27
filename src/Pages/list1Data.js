@@ -74,7 +74,7 @@ const scholarships = [
     {
       name: "Chief Minister's Scholarship (Delhi)",
       description: "Administered by the Delhi government",
-      state: "Delhi government",
+      state: "Delhi",
       no: "11",
     },
   ];
