@@ -70,6 +70,10 @@
     background-color: var(--background);
 }
 
+.list1:hover {
+    background-color: var(--hover);
+}
+
 .list1 .first {
     display: flex;
     align-items: center;
@@ -90,6 +94,10 @@
 
 .list1 .first .count {
     color: rgba(211, 2, 2, 0.884);
+}
+
+.list1 .first .date {
+    color: rgb(4, 109, 39);
 }
 
 .list1 .desc {

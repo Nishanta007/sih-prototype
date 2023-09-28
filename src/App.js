@@ -1,19 +1,22 @@
-import './App.css';
+import {BrowserRouter } from "react-router-dom";
+import "./App.css";
 import { Header } from "./MyComponents/Header";
 import Login from "./MyComponents/Login";
-import Organization_dash from './MyComponents/Organization_dash';
-import Dashboard from './Pages/Dashboard'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import Organization_dash from "./MyComponents/Organization_dash";
+import Dashboard from "./Pages/Dashboard";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function App() {
   return (
     <>
-      <div style={{ backgroundColor: '#fff', minHeight:'100vh' }}>
+      <div style={{ backgroundColor: "#fff", minHeight: "100vh" }}>
         <Header title="SIH" />
         {/* <Login/> */}
-        <Organization_dash />
-        {/* <Dashboard /> */}
+        {/* <Organization_dash /> */}
+        <BrowserRouter>
+          <Dashboard />
+        </BrowserRouter>
       </div>
     </>
   );

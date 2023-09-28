@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Dashboard.css';
-import api from "./list1Data";
 import List_phase1 from '../MyComponents/List_phase1';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -10,13 +9,15 @@ import ListItemText from '@mui/material/ListItemText';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import PendingActionsIcon from '@mui/icons-material/PendingActions';
 import CancelScheduleSendIcon from '@mui/icons-material/CancelScheduleSend';
+import Student from "../MyComponents/Student";
+import {Route, Routes } from 'react-router-dom';
 
 const Dashboard = () => {
-  const[data, setData] = useState(api);
   const [showListPhase1, setShowListPhase1] = useState(false);
   const handleVerificationRequestsClick = () => {
     setShowListPhase1(!showListPhase1);
   };
+
   return (
     <>
       <div className="contain">
@@ -48,11 +49,13 @@ const Dashboard = () => {
             </ListItem>
           </List>
         </div>
-        {showListPhase1 && 
-        <div className='scholarship'>
-          {data.map((e) => {
-          return <List_phase1 {...e} />
-        })} </div>
+        {showListPhase1 &&
+          <div className='scholarship'>
+            <Routes>
+              <Route exact path="/" element={<List_phase1 />} />
+              <Route exact path="/scholarship/:id" element={<Student />} />
+            </Routes>
+          </div>
         }
       </div>
     </>
