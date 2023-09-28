@@ -15,6 +15,7 @@ import CancelScheduleSendIcon from '@mui/icons-material/CancelScheduleSend';
 
 const Dashboard = () => {
   const [showListPhase1, setShowListPhase1] = useState(false);
+
   const handleVerificationRequestsClick = () => {
     setShowListPhase1(!showListPhase1);
   };

@@ -77,7 +77,7 @@
 }
 
 .list1:hover {
-    background-color: rgba(236, 255, 253, 0.671);
+    background-color: rgba(221, 247, 244, 0.795);
 }
 
 .list1 .first {
@@ -95,7 +95,7 @@
     text-shadow: 0px 1px 20px 10px rgba(0,0,0,0.05);
 }
 .list1 .first span {
-    color: rgb(2, 54, 122);
+    color: rgb(2, 39, 87);
 }
 
 .list1 .first .count {
@@ -145,5 +145,68 @@
 }
 
 .back_button:hover {
-    background-color: #f0f0f0;
+    background-color: #f5f5f5f1;
+}
+
+/* Student Modal */
+#main_modal {
+    border: none;
+    max-height: 90vh;
+    min-width: 50vw;
+    /* max-width: 60vh; */
+    border-radius: 1rem;
+    background-color: rgb(248, 248, 248);
+    padding: 1rem;
+    overflow: scroll;
+}
+
+#main_modal::-webkit-scrollbar{
+    display: none;
+}
+
+.heading {
+    background-color: #fff;
+    padding: 1rem 1rem;
+    border-radius: 10px;
+    color: #001d2f;
+    font-weight: 600;
+}
+
+.detail {
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    padding: 1rem 1rem 1rem 0;
+    border-radius: 10px;
+}
+
+.detail .detail_section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .3rem 0rem;
+    width: 100%;
+}
+
+.detail .detail_section .left {
+    font-size: 1.01rem;
+    font-weight: 500;
+    width: 40%;
+    color: #021522;
+}
+
+.detail .detail_section .right {
+    width: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: rgb(80, 80, 80);
+}
+
+.modal_bttn {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1rem .4rem 0 0;
 }

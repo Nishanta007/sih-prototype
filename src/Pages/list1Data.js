@@ -2,7 +2,8 @@ const scholarships = [
   {
     id: 1,
     name: "National Scholarship Portal (NSP)",
-    description: "A central platform offering various scholarships from different government ministries and departments.",
+    description:
+      "A central platform offering various scholarships from different government ministries and departments.",
     state: "national",
     no: "10",
     students: [
@@ -41,7 +42,8 @@ const scholarships = [
   {
     id: 2,
     name: "Post-Matric Scholarship Scheme for SC/ST Students",
-    description: "Provides financial assistance to Scheduled Caste (SC) and Scheduled Tribe (ST) students studying at the post-matriculation.",
+    description:
+      "Provides financial assistance to Scheduled Caste (SC) and Scheduled Tribe (ST) students studying at the post-matriculation.",
     state: "state",
     no: "16",
     students: [
@@ -61,7 +63,8 @@ const scholarships = [
         sname: "Avinash kumar",
         date: "31-09-2023",
         govt: "Bihar",
-        college: "Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat",
+        college:
+          "Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat",
       },
       {
         sname: "Rajnish raj",
@@ -80,7 +83,8 @@ const scholarships = [
   {
     id: 3,
     name: "Central Sector Scheme of Scholarships for College and University Students",
-    description: "Scholarship for meritorious students from low-income families, providing financial support for higher education.",
+    description:
+      "Scholarship for meritorious students from low-income families, providing financial support for higher education.",
     state: "national",
     no: "09",
     students: [
@@ -88,7 +92,8 @@ const scholarships = [
         sname: "Ranjit singh",
         date: "12-09-2023",
         govt: "Bihar",
-        college: "Maulana Azad National Institute of Technology (MANIT), Bhopal",
+        college:
+          "Maulana Azad National Institute of Technology (MANIT), Bhopal",
       },
       {
         sname: "Nishanta",
@@ -116,7 +121,6 @@ const scholarships = [
       },
     ],
   },
-
   {
     id: 4,
     name: "Prime Minister's Scholarship Scheme for Central Armed Police Forces and Assam Rifles",
@@ -129,26 +133,31 @@ const scholarships = [
         sname: "Ram singh",
         date: "12-09-2023",
         govt: "Bihar",
+        college: "Chitkara University, Punjab",
       },
       {
         sname: "Nishanta",
         date: "22-08-2023",
         govt: "Punjab",
+        college: "Amity University, Noida",
       },
       {
         sname: "Avinash kumar",
         date: "31-09-2023",
         govt: "Bihar",
+        college: "Manipur Institute of Technology (MIT), Manipur",
       },
       {
         sname: "Rajnish raj",
         date: "17-08-2023",
         govt: "Kerala",
+        college: "Sikkim Manipal Institute of Technology, Sikkim",
       },
       {
         sname: "Hitesh kumar",
         date: "19-07-2023",
         govt: "Maharashtra",
+        college: "National Institute of Technology (NIT), Goa",
       },
     ],
   },
@@ -164,29 +173,36 @@ const scholarships = [
         sname: "Rajesh singh",
         date: "12-09-2023",
         govt: "Bihar",
+        college: "Saraswati Institute of Technology and Management, Bihar",
       },
       {
         sname: "Nishanta",
         date: "22-08-2023",
         govt: "Punjab",
+        college: "St. Xavier's College, Punjab",
       },
       {
         sname: "Avinash kumar",
         date: "31-09-2023",
         govt: "Bihar",
+        college: "Government Polytechnic College, Bihar",
       },
       {
         sname: "Rajnish raj",
         date: "17-08-2023",
         govt: "Kerala",
+        college: "St. Thomas College, Kerala",
       },
       {
         sname: "Hitesh kumar",
         date: "19-07-2023",
         govt: "Maharashtra",
+        college:
+          "Vivekanand Education Society's Institute of Technology (VESIT), Mumbai",
       },
     ],
   },
+
   {
     id: 6,
     name: "INSPIRE Scholarship",
@@ -199,26 +215,32 @@ const scholarships = [
         sname: "Rakesh singh",
         date: "12-09-2023",
         govt: "Bihar",
+        college: "University College of Engineering, Patna",
       },
       {
         sname: "Nishanta",
         date: "22-08-2023",
         govt: "Punjab",
+        college:
+          "Giani Zail Singh Campus College of Engineering & Technology, Bathinda",
       },
       {
         sname: "Avinash kumar",
         date: "31-09-2023",
         govt: "Bihar",
+        college: "Birsa Institute of Technology, Sindri",
       },
       {
         sname: "Rajnish raj",
         date: "17-08-2023",
         govt: "Kerala",
+        college: "Government Engineering College, Kozhikode",
       },
       {
         sname: "Hitesh kumar",
         date: "19-07-2023",
         govt: "Maharashtra",
+        college: "Jawaharlal Nehru National College of Engineering, Shimoga",
       },
     ],
   },
@@ -466,4 +488,19 @@ const scholarships = [
   },
 ];
 
+const modal_data = [
+  {
+    aishe:"U-03897",
+    refno:"239086",
+    name:"Rahul singh",
+    regno: "2331058",
+    trade:"Computer science",
+    college:"Sant longowal institute of engineering and technology",
+    verification:"pending",
+    dmc:"https://www.dmc.com",
+    bonafide:"https://www.bonafide.com",
+  }
+];
+
 export default scholarships;
+export {modal_data};
