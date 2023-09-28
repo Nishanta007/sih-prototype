@@ -22,7 +22,7 @@
 /* sidebar Start*/
 .side {
     width: 20%;
-    position: sticky;
+    /* position: sticky; */
     background-color: var(--background);
     height: calc(100vh - 70px);
     box-shadow: 1px 5px 20px 4px rgba(0,0,0,0.05);
@@ -70,8 +70,14 @@
     background-color: var(--background);
 }
 
+#listbtn {
+    background-color: var(--background);
+    border-radius: 10px;
+    padding-left: 0rem;
+}
+
 .list1:hover {
-    background-color: var(--hover);
+    background-color: rgba(236, 255, 253, 0.671);
 }
 
 .list1 .first {
@@ -119,4 +125,25 @@
     color: rgb(1, 16, 44);
     font-style: oblique;
     margin: 0 0 1rem 0;
+}
+/* List1 end */
+
+/* back button */
+.back {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: .5rem 1rem;
+}
+
+.back .back_button {
+    border-radius: 6px;
+    background-color: #fff;
+    box-shadow: none;
+    border: 2px solid var(--hover);
+}
+
+.back_button:hover {
+    background-color: #f0f0f0;
 }

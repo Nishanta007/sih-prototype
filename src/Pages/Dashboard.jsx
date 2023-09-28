@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import './Dashboard.css';
 import List_phase1 from '../MyComponents/List_phase1';
+import Student from "../MyComponents/Student";
+import Back from '../MyComponents/Back_button';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -9,8 +12,6 @@ import ListItemText from '@mui/material/ListItemText';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import PendingActionsIcon from '@mui/icons-material/PendingActions';
 import CancelScheduleSendIcon from '@mui/icons-material/CancelScheduleSend';
-import Student from "../MyComponents/Student";
-import {Route, Routes } from 'react-router-dom';
 
 const Dashboard = () => {
   const [showListPhase1, setShowListPhase1] = useState(false);
@@ -53,7 +54,14 @@ const Dashboard = () => {
           <div className='scholarship'>
             <Routes>
               <Route exact path="/" element={<List_phase1 />} />
-              <Route exact path="/scholarship/:id" element={<Student />} />
+              <Route exact path="/scholarship/:id" Component={() => {
+                return (
+                  <>
+                    <Back />
+                    <Student />
+                  </>
+                );
+              }} />
             </Routes>
           </div>
         }

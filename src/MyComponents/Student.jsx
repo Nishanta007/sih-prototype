@@ -16,7 +16,7 @@ const Student = () => {
               <div className="name">{e.sname}</div>
               <div className="date">Date applied : <span>{e.date}</span></div>
             </div>
-            <div className="desc"></div>
+            <div className="desc">{e.college}</div>
             <div className="govt">By {e.govt} government</div>
           </div>
         );

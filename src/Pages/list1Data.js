@@ -2,8 +2,7 @@ const scholarships = [
   {
     id: 1,
     name: "National Scholarship Portal (NSP)",
-    description:
-      "A central platform offering various scholarships from different government ministries and departments.",
+    description: "A central platform offering various scholarships from different government ministries and departments.",
     state: "national",
     no: "10",
     students: [
@@ -11,34 +10,38 @@ const scholarships = [
         sname: "Rahul singh",
         date: "12-09-2023",
         govt: "Bihar",
+        college: "Indian Institute of Technology (IIT), Delhi",
       },
       {
         sname: "Nishanta",
         date: "22-08-2023",
         govt: "Punjab",
+        college: "National Institute of Technology (NIT), Jalandhar",
       },
       {
         sname: "Avinash kumar",
         date: "31-09-2023",
         govt: "Bihar",
+        college: "KNS Institute of Technology, Bangalore",
       },
       {
         sname: "Rajnish raj",
         date: "17-08-2023",
         govt: "Kerala",
+        college: "Pune Institute of Computer Technology, Pune",
       },
       {
         sname: "Hitesh kumar",
         date: "19-07-2023",
         govt: "Maharashtra",
+        college: "Vellore Institute of Technology (VIT), Vellore",
       },
     ],
   },
   {
     id: 2,
     name: "Post-Matric Scholarship Scheme for SC/ST Students",
-    description:
-      "Provides financial assistance to Scheduled Caste (SC) and Scheduled Tribe (ST) students studying at the post-matriculation.",
+    description: "Provides financial assistance to Scheduled Caste (SC) and Scheduled Tribe (ST) students studying at the post-matriculation.",
     state: "state",
     no: "16",
     students: [
@@ -46,34 +49,38 @@ const scholarships = [
         sname: "Rohan singh",
         date: "12-09-2023",
         govt: "Bihar",
+        college: "Shivaji University, Kolhapur",
       },
       {
         sname: "Nishanta",
         date: "22-08-2023",
         govt: "Punjab",
+        college: "Guru Gobind Singh Indraprastha University, Delhi",
       },
       {
         sname: "Avinash kumar",
         date: "31-09-2023",
         govt: "Bihar",
+        college: "Sardar Vallabhbhai National Institute of Technology (SVNIT), Surat",
       },
       {
         sname: "Rajnish raj",
         date: "17-08-2023",
         govt: "Kerala",
+        college: "Coimbatore Institute of Technology (CIT), Coimbatore",
       },
       {
         sname: "Hitesh kumar",
         date: "19-07-2023",
         govt: "Maharashtra",
+        college: "National Institute of Technology (NIT), Nagpur",
       },
     ],
   },
   {
     id: 3,
     name: "Central Sector Scheme of Scholarships for College and University Students",
-    description:
-      "Scholarship for meritorious students from low-income families, providing financial support for higher education.",
+    description: "Scholarship for meritorious students from low-income families, providing financial support for higher education.",
     state: "national",
     no: "09",
     students: [
@@ -81,29 +88,35 @@ const scholarships = [
         sname: "Ranjit singh",
         date: "12-09-2023",
         govt: "Bihar",
+        college: "Maulana Azad National Institute of Technology (MANIT), Bhopal",
       },
       {
         sname: "Nishanta",
         date: "22-08-2023",
         govt: "Punjab",
+        college: "National Institute of Technology (NIT), Agartala",
       },
       {
         sname: "Avinash kumar",
         date: "31-09-2023",
         govt: "Bihar",
+        college: "National Institute of Technology (NIT), Srinagar",
       },
       {
         sname: "Rajnish raj",
         date: "17-08-2023",
         govt: "Kerala",
+        college: "National Institute of Technology (NIT), Raipur",
       },
       {
         sname: "Hitesh kumar",
         date: "19-07-2023",
         govt: "Maharashtra",
+        college: "National Institute of Technology (NIT), Rourkela",
       },
     ],
   },
+
   {
     id: 4,
     name: "Prime Minister's Scholarship Scheme for Central Armed Police Forces and Assam Rifles",
