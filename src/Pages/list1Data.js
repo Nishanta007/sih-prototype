@@ -502,5 +502,6 @@ const modal_data = [
   }
 ];
 
+
 export default scholarships;
 export {modal_data};
