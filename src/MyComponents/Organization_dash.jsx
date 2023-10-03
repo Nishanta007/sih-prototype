@@ -11,6 +11,8 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { styled } from '@mui/material/styles';
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 import LogoutIcon from '@mui/icons-material/Logout';
+import HowToRegIcon from '@mui/icons-material/HowToReg';
+
 
 const getData = () => {
   const data = localStorage.getItem("Scholarship");
@@ -125,10 +127,10 @@ const Organization_dash = () => {
   return (
     <>
       <div className='main'>
-        <SideBar icon1={<PlaylistAddCheckIcon />} name1={'Registered Students'} icon2={<LogoutIcon />} name2={'Logout'} />
+        <SideBar icon1={<PlaylistAddCheckIcon />} name1={'Registered Students'} icon3={<LogoutIcon />} icon2={<HowToRegIcon />} name3={'Logout'} name2={'Verified Students'}/>
         <div className="contain">
           <div className='org'>
-            <h3 style={{ padding: '1rem 1.5rem' }}>Scholorships</h3>
+            <h3 style={{ padding: '1rem 1.5rem' }}>Scholarships</h3>
             <Button id='compose' variant='contain' startIcon={<AddIcon style={{ fontSize: '2rem' }} />} data-bs-toggle="modal" data-bs-target="#exampleModal">Create New</Button>
 
             <div className="modal fade" id="exampleModal" tabndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -149,7 +151,7 @@ const Organization_dash = () => {
                     <div>
                       <div>
                         <div className='spacebt'>
-                          <h6>Scholorship Name</h6>
+                          <h6>Scholarship Name</h6>
                           <Textfield onChange={handleSnameChange} width={"16rem"} ph={"Enter your scholorship name"} value={sname} />
 
                         </div>
